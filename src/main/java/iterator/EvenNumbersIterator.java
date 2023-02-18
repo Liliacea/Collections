@@ -1,6 +1,5 @@
 package iterator;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public  class EvenNumbersIterator implements Iterator {
@@ -20,6 +19,10 @@ public  class EvenNumbersIterator implements Iterator {
         return null;
     }
 
+    public static Iterator<Integer> getIterator() {
+        return iterator;
+    }
+
     public static void printEven(){
 
 
@@ -29,6 +32,7 @@ public  class EvenNumbersIterator implements Iterator {
                 System.out.println(num);
 
             }
+
 
     }
 
