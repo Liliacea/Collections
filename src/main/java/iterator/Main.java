@@ -1,13 +1,25 @@
 package iterator;
 
-import java.util.*;
-
 
 public class Main {
 
 
     public static void main(String[] args) {
-        Integer[] array = new Integer[]{1, 2, 2, 4, 7, 8, 5, 4};
+        EvenNumbersIterator evenNumbersIterator = new EvenNumbersIterator(new int[]{2, 3, 4, 5, 8, 2});
+
+
+            evenNumbersIterator.hasNext();
+
+        };
+
+    }
+
+
+
+
+        ;
+       // evenNumbersIterator.next();
+     /*   Integer[] array = new Integer[]{1, 2, 2, 4, 7, 8, 5, 4};
 
         ArrayList<Integer> arrayList = new ArrayList<>();
         Collections.addAll(arrayList, array);
@@ -19,8 +31,10 @@ public class Main {
 
             }
 
-    }
-}
+      */
+
+
+
 
 
 
