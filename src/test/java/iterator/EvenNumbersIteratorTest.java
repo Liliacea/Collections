@@ -28,6 +28,32 @@ class EvenNumbersIteratorTest {
     @org.junit.jupiter.api.Test
 
     /**
+     * not even number
+     */
+
+    @Test()
+    public void notEvenCase() {
+        it = new EvenNumbersIterator(new int[]{1,3});
+        assertThat(it.next(), is(1));
+        assertThat(it.hasNext(), is(false));
+
+
+    }
+
+    /**
+     * if even number in the end of array
+     */
+
+    @Test()
+    public void evenCase() {
+        it = new EvenNumbersIterator(new int[]{2});
+        assertThat(it.next(), is(2));
+        assertThat(it.hasNext(), is(true));
+
+
+    }
+
+    /**
      * If the array is empty.
      */
 

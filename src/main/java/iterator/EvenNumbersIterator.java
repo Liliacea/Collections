@@ -17,6 +17,7 @@ public  class EvenNumbersIterator implements Iterator {
     private final int[] values;
     private int index;
     private int evenIndex;
+    boolean has = false;
 
 
     public EvenNumbersIterator(int[] values) {
@@ -32,7 +33,7 @@ public  class EvenNumbersIterator implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        boolean has = false;
+
         for (int index = 0; index < values.length; index++) {
             has = false;
 
@@ -96,7 +97,13 @@ public  class EvenNumbersIterator implements Iterator {
             } return 1;
 
 
+
+
     }
+
+
+
+
 
 
         public static Iterator<Integer> getIterator () {
