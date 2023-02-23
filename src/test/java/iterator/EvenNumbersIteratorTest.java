@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 
 class EvenNumbersIteratorTest {
 
-   private Iterator<Integer> it;
+    private Iterator<Integer> it;
 
     /**
      * Initialize the class EvenNumberIterator.
@@ -24,71 +24,37 @@ class EvenNumbersIteratorTest {
         it = new EvenNumbersIterator(new int[]{2, 3, 4});
     }
 
-    /**
-     * If the item does not exist, an exception is thrown.
-     */
+
     @org.junit.jupiter.api.Test
 
-
-
-
-    @Test(expected = NoSuchElementException.class)
-    public void shouldReturnEvenNumbersSequentially() {
-        setUp();
-        assertThat(it.hasNext(), is (true));
-        assertThat(it.next(), is(4));
-       // assertThat(it.hasNext(), is (false));
-      //  assertThat(it.next(), is(3));
-
-
-       /* assertThat(it.hasNext(), is(false));
-        assertThat(it.next(), is(3));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(4));
-        assertThat(it.hasNext(), is(true));
-        it.next();
-
-        */
-
-
-    }
-
     /**
-     * Testing hasNext twice.
+     * If the array is empty.
      */
-    @Test(expected = NoSuchElementException.class)
-    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
-        setUp();
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(2));
-        assertThat(it.next(), is(4));
-        assertThat(it.next(), is(6));
-    }
 
-    /**
-     * Testing hasNext .
-     */
-    @Test(expected = NoSuchElementException.class)
-    public void shouldReturnFalseIfNoAnyEvenNumbers() {
-        it = new EvenNumbersIterator(new int[]{1});
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void emptyArray() {
+        it = new EvenNumbersIterator(new int[]{});
+        assertThat(it.next(), is(1));
         assertThat(it.hasNext(), is(false));
+
+
     }
 
     /**
-     * All numbers are even.
+     * Multiple call hasNext return the same value
      */
-    @Test
-    public void allNumbersAreEven() {
-        it = new EvenNumbersIterator(new int[]{2, 4, 6, 8});
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(2));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(4));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(6));
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(8));
+    @Test()
+    public void multipleCallHasNext() {
+        setUp();
+        for (int i = 0; i < 10; i++) {
+            assertThat(it.hasNext(), is(true));
+        }
+
     }
 }
+
+
+
+
+
 

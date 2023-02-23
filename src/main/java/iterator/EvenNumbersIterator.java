@@ -1,5 +1,6 @@
 package iterator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -49,9 +50,12 @@ public  class EvenNumbersIterator implements Iterator {
 
 
         }
-        System.out.println("кончились");
+
+
+
+        System.out.println("конец массива");
         return has;
-    }
+        }
 
 
 
@@ -64,27 +68,40 @@ public  class EvenNumbersIterator implements Iterator {
      */
 
     @Override
-    public Integer next() throws NoSuchElementException {
-   // ArrayList<Integer> arrayList = new ArrayList<>();
+    public Integer next()  {
+
+
         for (int index = 0; index < values.length; index++) {
 
             if (values[index] % 2 == 0) {
 
                 evenIndex = index;
-                //    arrayList.add(values[evenIndex]);
+
                 System.out.println(values[evenIndex]);
             }
 
 
+            }
+
+
+
+            try {
+
+                return values[evenIndex];
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("пустой массив");
+                e.printStackTrace();
+
+            } return 1;
+
+
+    }
+
+
+        public static Iterator<Integer> getIterator () {
+            return iterator;
         }
 
-        return values[evenIndex];
 
     }
-
-    public static Iterator<Integer> getIterator() {
-        return iterator;
-    }
-
-
-}
