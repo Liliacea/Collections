@@ -1,8 +1,5 @@
 package iterator;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -13,15 +10,16 @@ import java.util.NoSuchElementException;
  */
 public  class EvenNumbersIterator implements Iterator {
 
-    static Iterator<Integer> iterator;
+    public static Integer[] iterator;
     private final int[] values;
     private int index;
     private int evenIndex;
-    boolean has = false;
+ //   boolean has = false;
 
 
     public EvenNumbersIterator(int[] values) {
         this.values = values;
+
 
 
     }
@@ -34,28 +32,26 @@ public  class EvenNumbersIterator implements Iterator {
     @Override
     public boolean hasNext() {
 
-        for (int index = 0; index < values.length; index++) {
-            has = false;
+
+        for (index = index; index < values.length; index++) {
+          //  has = false;
 
             if (values[index] % 2 == 0) {
 
                 evenIndex = index;
 
-                System.out.println("есть");
 
-                has = true;
+
+               return true;
+
+
+
             } else {
-                System.out.println("нет");
-                has = false;
+                return false;
             }
 
 
-        }
-
-
-
-        System.out.println("конец массива");
-        return has;
+        } return false;
         }
 
 
@@ -69,46 +65,36 @@ public  class EvenNumbersIterator implements Iterator {
      */
 
     @Override
-    public Integer next()  {
+    public Integer next() throws NoSuchElementException  {
+
+/*if(!hasNext()){
+    throw new NoSuchElementException("");
+
+}
+
+ */
+try {
 
 
-        for (int index = 0; index < values.length; index++) {
+    if (values[index] % 2 == 0) {
 
-            if (values[index] % 2 == 0) {
-
-                evenIndex = index;
-
-                System.out.println(values[evenIndex]);
-            }
-
-
-            }
-
-
-
-            try {
-
-                return values[evenIndex];
-
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("пустой массив");
-                e.printStackTrace();
-
-            } return 1;
-
-
+        evenIndex = index;
 
 
     }
+} catch (NoSuchElementException e){
+    return -1;
+}
+finally {
 
-
-
-
-
-
-        public static Iterator<Integer> getIterator () {
-            return iterator;
-        }
-
-
+    index++;
+    return values[evenIndex];
     }
+}}
+
+
+
+
+
+
+

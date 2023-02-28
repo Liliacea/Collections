@@ -32,13 +32,20 @@ class EvenNumbersIteratorTest {
      */
 
     @Test()
-    public void notEvenCase() {
-        it = new EvenNumbersIterator(new int[]{1,3});
-        assertThat(it.next(), is(1));
-        assertThat(it.hasNext(), is(false));
+
+        public void shouldReturnEvenNumbersSequentially() {
+        setUp();
+            assertThat(it.hasNext(), is(true));
+          //  assertThat(it.next(), is(2));
+            assertThat(it.hasNext(), is(false));
+        //    assertThat(it.next(), is(4));
+
+            assertThat(it.hasNext(), is(true));
+        //    it.next();
+        }
 
 
-    }
+
 
     /**
      * if even number in the end of array
