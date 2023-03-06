@@ -78,30 +78,40 @@ public class EvenNumbersIteratorTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(8));
     }
+
+    /**
+     * case empty array
+     */
     @Test
     public void emptyArray() {
         it = new EvenNumbersIterator(new int[]{});
         assertThat(it.hasNext(), is(false));
     }
 
+    /**
+     *  both even and not even numbers
+     */
     @Test
     public void differentNumbers() {
         it = new EvenNumbersIterator(new int[]{2,3,4,5});
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(false));
-
-
     }
 
+    /**
+     * Multiply calling of hasNext return the same values
+     */
     @Test
     public void hasNextReturnTheSameValues() {
         assertThat(it.hasNext(), is(false));
         assertThat(it.hasNext(), is(false));
         assertThat(it.hasNext(), is(false));
-
     }
 
+    /**
+     * Multiply calling of next return only even numbers
+     */
     @Test (expected = NoSuchElementException.class)
     public void nextOnlyReturnAllEvenValues(){
         assertThat(it.next(),is(2));
@@ -109,6 +119,9 @@ public class EvenNumbersIteratorTest {
         assertThat(it.next(), is(6));
     }
 
+    /**
+     * hasNext which called after next check the next element of array
+     */
     @Test(expected = NoSuchElementException.class)
     public void firstNextAfterHasNextUseNextIndex() {
         assertThat(it.next(),is(2));
@@ -117,11 +130,6 @@ public class EvenNumbersIteratorTest {
         assertThat(it.next(),is(6));
         assertThat(it.hasNext(),is(false));
     }
-
-
-
-
-
 }
 
 
