@@ -59,7 +59,7 @@ public class EvenNumbersIteratorTest {
      */
     @Test
     public void shouldReturnFalseIfNoAnyEvenNumbers() {
-        it = new EvenNumbersIterator(new int[]{});
+        it = new EvenNumbersIterator(new int[]{1,3,5});
         assertThat(it.hasNext(), is(false));
     }
 
@@ -78,6 +78,50 @@ public class EvenNumbersIteratorTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(8));
     }
+    @Test
+    public void emptyArray() {
+        it = new EvenNumbersIterator(new int[]{});
+        assertThat(it.hasNext(), is(false));
+    }
+
+    @Test
+    public void differentNumbers() {
+        it = new EvenNumbersIterator(new int[]{2,3,4,5});
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(2));
+        assertThat(it.hasNext(), is(false));
+
+
+    }
+
+    @Test
+    public void hasNextReturnTheSameValues() {
+        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(false));
+
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void nextOnlyReturnAllEvenValues(){
+        assertThat(it.next(),is(2));
+        assertThat(it.next(),is(4));
+        assertThat(it.next(), is(6));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void firstNextAfterHasNextUseNextIndex() {
+        assertThat(it.next(),is(2));
+        assertThat(it.next(),is(4));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(),is(6));
+        assertThat(it.hasNext(),is(false));
+    }
+
+
+
+
+
 }
 
 
