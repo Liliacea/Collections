@@ -43,7 +43,7 @@ public class EvenNumbersIteratorTest {
     }
 
     /**
-     * Testing hasNext twice.
+     * Wrong order of invocation.
      */
     @Test(expected = NoSuchElementException.class)
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
@@ -100,7 +100,7 @@ public class EvenNumbersIteratorTest {
     }
 
     /**
-     * Multiply calling of hasNext return the same values
+     * Multiply invocation of hasNext return the same values
      */
     @Test
     public void hasNextReturnTheSameValues() {
@@ -110,7 +110,7 @@ public class EvenNumbersIteratorTest {
     }
 
     /**
-     * Multiply calling of next return only even numbers
+     * Multiply invocation of next return only even numbers
      */
     @Test (expected = NoSuchElementException.class)
     public void nextOnlyReturnAllEvenValues(){
@@ -120,7 +120,7 @@ public class EvenNumbersIteratorTest {
     }
 
     /**
-     * hasNext which called after next check the next element of array
+     * hasNext which invocated after next check the next element of array
      */
     @Test(expected = NoSuchElementException.class)
     public void firstNextAfterHasNextUseNextIndex() {
