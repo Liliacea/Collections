@@ -32,7 +32,7 @@ public class EvenNumbersIteratorTest {
      */
     @Test(expected = NoSuchElementException.class)
     public void shouldReturnEvenNumbersSequentially() {
-        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(4));
@@ -47,11 +47,12 @@ public class EvenNumbersIteratorTest {
      */
     @Test(expected = NoSuchElementException.class)
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
-        assertThat(it.hasNext(), is(false));
-        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.next(), is(4));
         assertThat(it.next(), is(6));
+        it.next();
     }
 
     /**
@@ -68,7 +69,7 @@ public class EvenNumbersIteratorTest {
      */
     @Test
     public void allNumbersAreEven() {
-        it = new EvenNumbersIterator(new int[]{2, 4, 6, 8});
+        it = new EvenNumbersIterator(new int[]{2, 3, 4, 6, 8});
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(true));
@@ -96,7 +97,7 @@ public class EvenNumbersIteratorTest {
         it = new EvenNumbersIterator(new int[]{2,3,4,5});
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
-        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(true));
     }
 
     /**
@@ -104,9 +105,9 @@ public class EvenNumbersIteratorTest {
      */
     @Test
     public void hasNextReturnTheSameValues() {
-        assertThat(it.hasNext(), is(false));
-        assertThat(it.hasNext(), is(false));
-        assertThat(it.hasNext(), is(false));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.hasNext(), is(true));
     }
 
     /**
@@ -117,6 +118,7 @@ public class EvenNumbersIteratorTest {
         assertThat(it.next(),is(2));
         assertThat(it.next(),is(4));
         assertThat(it.next(), is(6));
+        it.next();
     }
 
     /**
@@ -129,6 +131,7 @@ public class EvenNumbersIteratorTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(),is(6));
         assertThat(it.hasNext(),is(false));
+        it.next();
     }
 }
 

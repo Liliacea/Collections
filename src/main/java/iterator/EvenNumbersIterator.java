@@ -31,7 +31,8 @@ public class EvenNumbersIterator implements Iterator {
             if (values[index] % 2 == 0) {
                 return true;
             } else {
-                return false;
+                index++;
+               // return false;
             }
         }
         return false;
@@ -43,7 +44,7 @@ public class EvenNumbersIterator implements Iterator {
      * @return even values
      */
     @Override
-    public Integer next() throws NoSuchElementException {
+    public Integer next() {
         if (!hasNext()) {
             throw new NoSuchElementException("");
         }
