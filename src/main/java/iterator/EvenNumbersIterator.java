@@ -32,8 +32,7 @@ public class EvenNumbersIterator implements Iterator {
                 return true;
             } else {
                 index++;
-               // return false;
-            }
+              }
         }
         return false;
     }
